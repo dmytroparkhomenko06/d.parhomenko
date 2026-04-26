@@ -3,185 +3,186 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Лендинг — Работа с подсознанием</title>
+  <title>Курс по гипнотерапии — Дмитрий Пархоменко</title>
+  <meta
+    name="description"
+    content="Авторский курс по гипнотерапии от Дмитрия Пархоменко. Узнайте, что такое гипноз, как работать с подсознанием, эмоциями и внутренними блоками."
+  />
   <style>
     :root {
-      --bg: #2b0f4a;
-      --bg-secondary: #3a1563;
-      --bg-soft: #4d1d7f;
-      --accent: #c86bff;
-      --accent-strong: #e15dff;
-      --text: #ffffff;
-      --text-soft: rgba(255,255,255,0.82);
-      --line: rgba(255,255,255,0.14);
-      --card: rgba(255,255,255,0.08);
-      --shadow: rgba(132, 42, 204, 0.45);
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text: #f4f7fb;
+      --muted: #b9c2d6;
+      --accent: #8b5cf6;
+      --accent-2: #22c55e;
+      --accent-3: #06b6d4;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --container: 1180px;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(225, 93, 255, 0.22), transparent 28%),
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.06), transparent 18%),
-        linear-gradient(135deg, var(--bg) 0%, var(--bg-secondary) 52%, #220a3d 100%);
-      min-height: 100vh;
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.22), transparent 30%),
+        radial-gradient(circle at top right, rgba(6, 182, 212, 0.14), transparent 28%),
+        linear-gradient(180deg, #0a0f1f 0%, #0f1730 40%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      background: rgba(31, 10, 52, 0.68);
-      border-bottom: 1px solid var(--line);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .container {
-      width: min(1200px, calc(100% - 32px));
+      width: min(100% - 32px, var(--container));
       margin: 0 auto;
     }
 
-    .nav {
-      display: flex;
+    .section {
+      padding: 84px 0;
+      position: relative;
+    }
+
+    .section-sm {
+      padding: 56px 0;
+    }
+
+    .badge {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 16px 0;
-    }
-
-    .logo {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .logo span {
-      color: #f2b7ff;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--text-soft);
-      text-decoration: none;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #dbe5ff;
       font-size: 14px;
+      letter-spacing: 0.2px;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      box-shadow: 0 0 12px rgba(139, 92, 246, 0.8);
+      flex: 0 0 auto;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 18px;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 68px);
+      letter-spacing: -1.5px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: -1px;
+    }
+
+    h3 {
+      font-size: clamp(22px, 2.2vw, 28px);
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .lead {
+      font-size: clamp(18px, 2vw, 22px);
+      color: #e7ecf8;
+      max-width: 820px;
+    }
+
+    .muted {
+      color: var(--muted);
     }
 
     .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 48px 0 72px;
-      flex: 1;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      filter: blur(60px);
-      pointer-events: none;
-    }
-
-    .hero::before {
-      width: 320px;
-      height: 320px;
-      background: rgba(225, 93, 255, 0.2);
-      top: 30px;
-      left: -80px;
-    }
-
-    .hero::after {
-      width: 360px;
-      height: 360px;
-      background: rgba(147, 87, 255, 0.22);
-      bottom: -120px;
-      right: -100px;
+      padding: 40px 0 80px;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 40px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
       align-items: center;
     }
 
+    .hero-card,
+    .glass-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
     .hero-content {
-      position: relative;
-      z-index: 2;
+      padding: 24px 0;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 16px;
-      padding: 8px 14px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.08);
-      border-radius: 999px;
-      font-size: 13px;
-      color: #f3d6ff;
-    }
-
-    h1 {
-      margin: 0 0 20px;
-      font-size: clamp(34px, 6vw, 68px);
-      line-height: 1.04;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      max-width: 760px;
-    }
-
-    .hero-text {
-      margin: 0 0 30px;
-      max-width: 600px;
-      color: var(--text-soft);
-      font-size: clamp(16px, 2vw, 20px);
-      line-height: 1.6;
+    .hero h1 span {
+      background: linear-gradient(90deg, #ffffff, #cab8ff, #9fe7ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 30px;
+      gap: 14px;
+      margin: 32px 0 28px;
     }
 
     .btn {
-      appearance: none;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 54px;
+      gap: 10px;
+      min-height: 56px;
       padding: 0 24px;
-      border-radius: 14px;
+      border-radius: 999px;
       font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
       font-size: 16px;
+      border: 1px solid transparent;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -189,137 +190,319 @@
     }
 
     .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #6d28d9);
       color: white;
-      background: linear-gradient(135deg, #d86dff 0%, #9d49ff 100%);
-      box-shadow: 0 16px 36px var(--shadow);
+      box-shadow: 0 12px 28px rgba(139, 92, 246, 0.35);
     }
 
     .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
       color: white;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(10px);
+      border-color: rgba(255, 255, 255, 0.15);
     }
 
-    .hero-stats {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      min-width: 150px;
-      padding: 16px 18px;
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px;
-      backdrop-filter: blur(8px);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 6px;
-    }
-
-    .stat span {
-      color: var(--text-soft);
-      font-size: 14px;
-      line-height: 1.4;
-    }
-
-    .hero-visual {
-      position: relative;
-      z-index: 2;
-    }
-
-    .banner-card {
-      position: relative;
-      border-radius: 28px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 24px 60px rgba(14, 5, 28, 0.35);
-    }
-
-    .banner-card img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .banner-glow {
-      position: absolute;
-      inset: auto 20px 20px 20px;
-      height: 80px;
-      border-radius: 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0), rgba(181, 92, 255, 0.18));
-      pointer-events: none;
-    }
-
-    .section-preview {
-      padding: 0 0 64px;
-    }
-
-    .preview-box {
+    .hero-points {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
     }
 
-    .preview-item {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 20px;
-      padding: 24px;
-    }
-
-    .preview-item h3 {
-      margin: 0 0 12px;
-      font-size: 20px;
-    }
-
-    .preview-item p {
-      margin: 0;
-      color: var(--text-soft);
-      line-height: 1.6;
+    .point {
+      padding: 16px 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #edf2ff;
       font-size: 15px;
     }
 
-    @media (max-width: 980px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
+    .hero-visual {
+      padding: 18px;
+    }
 
+    .hero-banner {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      min-height: 620px;
+      background:
+        linear-gradient(180deg, rgba(8, 12, 25, 0.18), rgba(8, 12, 25, 0.72)),
+        url("https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+      display: flex;
+      align-items: end;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-overlay {
+      padding: 28px;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(7, 10, 20, 0.88) 100%);
+    }
+
+    .hero-mini {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 13px;
+      color: #eef3ff;
+    }
+
+    .hero-overlay h3 {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .hero-overlay p {
+      color: #d7dff0;
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+
+    .section-head {
+      max-width: 850px;
+      margin-bottom: 40px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 24px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.26), rgba(6,182,212,0.2));
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .states-grid .card {
+      min-height: 100%;
+    }
+
+    .timeline-list,
+    .check-list,
+    .faq-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .check-list li,
+    .timeline-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 14px;
+      color: #e7ecf8;
+      font-size: 17px;
+    }
+
+    .check-list li::before,
+    .timeline-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    .number-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .number-card {
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .number {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff, #b7c9ff, #9fe7ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .course-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .course-item {
+      padding: 22px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #edf2ff;
+      min-height: 100%;
+    }
+
+    .accent-box {
+      padding: 34px;
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(139,92,246,0.2), rgba(6,182,212,0.16)),
+        rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+    }
+
+    .audience-grid,
+    .result-grid,
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .small-card {
+      padding: 22px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .profile-photo {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      min-height: 340px;
+      background:
+        linear-gradient(180deg, rgba(8,12,25,0.15), rgba(8,12,25,0.45)),
+        url("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
+    }
+
+    .cta-box {
+      padding: 40px;
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(139,92,246,0.22), rgba(6,182,212,0.18)),
+        rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .cta-box p {
+      max-width: 820px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .faq-item {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 16px;
+    }
+
+    .faq-item h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #95a3bf;
+      font-size: 14px;
+      padding: 24px 0 40px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+      margin: 8px 0 0;
+    }
+
+    @media (max-width: 992px) {
       .hero {
-        padding-top: 28px;
+        min-height: auto;
+        padding-top: 24px;
       }
 
-      .hero-visual {
-        order: -1;
-      }
-
-      .preview-box {
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .number-grid,
+      .course-list,
+      .audience-grid,
+      .result-grid,
+      .format-grid,
+      .profile {
         grid-template-columns: 1fr;
       }
 
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
+      .hero-banner {
+        min-height: 420px;
+      }
+
+      .hero-points {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 640px) {
-      .container {
-        width: min(100% - 24px, 1200px);
+      .section {
+        padding: 64px 0;
       }
 
-      .hero {
-        padding-bottom: 48px;
+      .card,
+      .number-card,
+      .small-card,
+      .faq-item,
+      .accent-box,
+      .cta-box {
+        padding: 22px;
       }
 
-      h1 {
-        font-size: 34px;
+      p {
+        font-size: 16px;
       }
 
       .btn {
@@ -329,112 +512,549 @@
       .hero-actions {
         flex-direction: column;
       }
-
-      .stat {
-        width: 100%;
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header class="header">
-      <div class="container">
-        <nav class="nav">
-          <div class="logo">Mind<span>Shift</span></div>
-          <div class="nav-links">
-            <a href="#program">Программа</a>
-            <a href="#benefits">Преимущества</a>
-            <a href="#reviews">Отзывы</a>
-            <a href="#contacts">Контакты</a>
-          </div>
-        </nav>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Авторский курс по гипнотерапии
+        </div>
+
+        <h1 style="margin-top: 18px;">
+          <span>Курс по гипнотерапии:</span><br />
+          научитесь работать с подсознанием и помогать людям менять жизнь к лучшему
+        </h1>
+
+        <p class="lead">
+          Авторский курс Дмитрия Пархоменко — выпускника Американской Академии Гипноза.
+          Узнайте, что такое гипноз, как он работает, какие инструменты применять в практике
+          и как через гипнотерапию помогать себе и другим.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#consultation" class="btn btn-primary">Записаться на бесплатную консультацию</a>
+          <a href="#mini-course" class="btn btn-secondary">Получить бесплатный мини-курс</a>
+        </div>
+
+        <div class="hero-points">
+          <div class="point">Для начинающих и практикующих специалистов</div>
+          <div class="point">Понятная система обучения</div>
+          <div class="point">Работа с подсознанием, эмоциями и внутренними блоками</div>
+          <div class="point">Практическое применение гипнотерапии</div>
+        </div>
       </div>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div class="container">
-          <div class="hero-grid">
-            <div class="hero-content">
-              <div class="eyebrow">Обучение работе с подсознанием</div>
-              <h1>Научись работать с подсознанием и помогать людям менять жизнь к лучшему.</h1>
-              <p class="hero-text">
-                Освой современный подход, который помогает глубже понимать внутренние процессы человека,
-                экологично сопровождать изменения и строить востребованную практику помощи людям.
-              </p>
-
-              <div class="hero-actions">
-                <a
-                  class="btn btn-primary"
-                  href="https://t.me/DmytroParkhomenkohypnotherapist"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Записаться на курс
-                </a>
-                <a
-                  class="btn btn-secondary"
-                  href="https://t.me/DmytroParkhomenkohypnotherapist"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Узнать подробнее
-                </a>
-              </div>
-
-              <div class="hero-stats">
-                <div class="stat">
-                  <strong>8 недель</strong>
-                  <span>Практико-ориентированного обучения</span>
-                </div>
-                <div class="stat">
-                  <strong>Онлайн</strong>
-                  <span>Из любой точки мира в удобном формате</span>
-                </div>
-                <div class="stat">
-                  <strong>Поддержка</strong>
-                  <span>Кураторы и разбор реальных кейсов</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="hero-visual">
-              <div class="banner-card">
-                <img
-                  src="https://pfst.cf2.poecdn.net/base/image/8c8995640edd827edb710c39d6e3e4f76d7a63d795e4afd2a986f2fbd6436dc3?w=1536&h=1024"
-                  alt="Банер первого экрана"
-                />
-                <div class="banner-glow"></div>
-              </div>
-            </div>
+      <div class="hero-card hero-visual">
+        <div class="hero-banner">
+          <div class="hero-overlay">
+            <span class="hero-mini">Глубокая работа с подсознанием</span>
+            <h3>Освойте гипнотерапию как инструмент трансформации</h3>
+            <p>
+              Понимание состояний сознания, работа с эмоциями, регрессия,
+              экологичное сопровождение и практическое применение в жизни и профессии.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <section class="section-preview" id="benefits">
-        <div class="container">
-          <div class="preview-box">
-            <div class="preview-item">
-              <h3>Глубокое понимание</h3>
-              <p>Изучай инструменты работы с убеждениями, эмоциями, внутренними сценариями и личностными изменениями.</p>
-            </div>
-            <div class="preview-item">
-              <h3>Практика с первого модуля</h3>
-              <p>Закрепляй знания на упражнениях, разборах и пошаговых техниках, которые можно применять в работе.</p>
-            </div>
-            <div class="preview-item">
-              <h3>Профессия с пользой</h3>
-              <p>Помогай людям проходить через внутренние трансформации и выстраивай экспертность в востребованной нише.</p>
-            </div>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Почему вам стоит обратить внимание на гипнотерапию
+        </div>
+        <h2 style="margin-top: 18px;">Гипноз — это естественное состояние, знакомое каждому человеку</h2>
+        <p class="lead">
+          Это не что-то далёкое или мистическое. В обычной жизни мы находимся в активном состоянии анализа,
+          решений и действий. Но бывают моменты, когда внимание меняется, а подсознание становится более открытым.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="icon">🧠</div>
+          <h3>Это происходит каждый день</h3>
+          <p>
+            Перед сном, после пробуждения, в глубокой задумчивости, в моменты сильной вовлечённости,
+            любви или внутреннего переживания человек естественно входит в изменённое состояние внимания.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">✨</div>
+          <h3>В такие моменты внимание становится глубже</h3>
+          <p>
+            Подсознание становится более восприимчивым, а внутренний фокус — более собранным.
+            Именно поэтому гипнотерапия может быть эффективным инструментом глубинной работы.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sm">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Как работает состояние гипноза
+        </div>
+        <h2 style="margin-top: 18px;">Разные уровни внутренней активности и естественные трансовые состояния</h2>
+      </div>
+
+      <div class="grid-2 states-grid">
+        <div class="card">
+          <div class="icon">β</div>
+          <h3>Бета-состояние</h3>
+          <p>Обычная повседневная активность, анализ, решения, мышление, внимание к внешнему миру.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">α</div>
+          <h3>Альфа-состояние</h3>
+          <p>Расслабление, лёгкая внушаемость, внутреннее замедление и естественный переход ко сну.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">θ</div>
+          <h3>Тета-состояние</h3>
+          <p>Более глубокое внутреннее погружение, усиленная восприимчивость и доступ к эмоциональному материалу.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">δ</div>
+          <h3>Дельта-состояние</h3>
+          <p>Состояние глубокого сна и восстановления, в котором тело и психика проходят глубокие процессы регуляции.</p>
+        </div>
+      </div>
+
+      <div class="accent-box" style="margin-top: 28px;">
+        <h3>С гипнотическим состоянием человек сталкивается постоянно</h3>
+        <ul class="check-list">
+          <li>Когда делает что-то автоматически, а мыслями находится далеко</li>
+          <li>Когда читает страницу и не помнит, о чём только что прочитал</li>
+          <li>Когда ведёт машину и параллельно думает о своих делах</li>
+          <li>Когда полностью поглощён сильным чувством или переживанием</li>
+        </ul>
+        <p style="margin-top: 12px;">
+          Всё это — примеры естественного трансового состояния, которое уже знакомо каждому человеку.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Что такое гипноз на самом деле
+        </div>
+        <h2 style="margin-top: 18px;">Без мифов, страхов и потери контроля</h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Гипноз — это естественное, но не постоянное состояние сознания</h3>
+          <p>
+            Он не означает потерю воли или отключение личности. Это особое состояние концентрации внимания,
+            при котором внутренние процессы становятся более доступными для осознания и трансформации.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>В гипнозе человек:</h3>
+          <ul class="check-list">
+            <li>сохраняет контроль;</li>
+            <li>всё помнит;</li>
+            <li>осознаёт происходящее;</li>
+            <li>глубоко концентрируется на одной идее, образе или внутреннем процессе.</li>
+          </ul>
+          <p>
+            Во многом это похоже на медитацию, когда внимание собирается в одной точке и открывает более глубокий доступ к внутреннему миру.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sm">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Почему гипнотерапия работает
+        </div>
+        <h2 style="margin-top: 18px;">Большинство внутренних ограничений держатся не на логике, а на эмоциях</h2>
+        <p class="lead">
+          Повторяющиеся сценарии, страхи, внутренние блоки, напряжение, неуверенность и болезненные реакции
+          часто связаны с тем, что в подсознании сохраняется эмоциональный заряд.
+        </p>
+      </div>
+
+      <div class="number-grid">
+        <div class="number-card">
+          <div class="number">01</div>
+          <h3>Работа с причиной</h3>
+          <p>
+            Разговоры помогают понять ситуацию, но не всегда снимают глубинную эмоциональную реакцию.
+          </p>
+        </div>
+        <div class="number-card">
+          <div class="number">02</div>
+          <h3>Доступ к подсознанию</h3>
+          <p>
+            Гипнотерапия позволяет работать глубже — там, где формируются автоматические реакции и внутренние убеждения.
+          </p>
+        </div>
+        <div class="number-card">
+          <div class="number">03</div>
+          <h3>Трансформация состояния</h3>
+          <p>
+            Когда меняется эмоциональная основа, меняется и внутреннее восприятие ситуации, а вслед за ним — поведение.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Что вы изучите на курсе
+        </div>
+        <h2 style="margin-top: 18px;">Пошаговая программа обучения гипнотерапии</h2>
+      </div>
+
+      <div class="course-list">
+        <div class="course-item">Что такое гипноз и как он работает</div>
+        <div class="course-item">Состояния сознания и уровни восприимчивости</div>
+        <div class="course-item">Как установить контакт и подготовить человека к процессу</div>
+        <div class="course-item">Базовые техники гипнотического наведения</div>
+        <div class="course-item">Работа с подсознанием и эмоциями</div>
+        <div class="course-item">Регрессия как инструмент работы с проблемной ситуацией</div>
+        <div class="course-item">Как выявлять и убирать эмоциональные блоки</div>
+        <div class="course-item">Как проводить сессию безопасно и экологично</div>
+        <div class="course-item">Как применять гипнотерапию для себя и в помощи другим</div>
+        <div class="course-item">Практическое понимание глубинных процессов человека</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sm">
+    <div class="container">
+      <div class="accent-box">
+        <div class="section-head" style="margin-bottom: 24px;">
+          <div class="badge">
+            <span class="eyebrow-dot"></span>
+            Отдельный блок про регрессию
+          </div>
+          <h2 style="margin-top: 18px;">Регрессия — один из ключевых инструментов глубинной работы</h2>
+        </div>
+
+        <p class="lead">
+          С помощью регрессии мы возвращаемся к проблемной ситуации, чтобы изменить отношение к ней
+          и освободить эмоциональный блок, который продолжает влиять на жизнь человека.
+        </p>
+
+        <div class="grid-2" style="margin-top: 24px;">
+          <div class="small-card">
+            <h3>Что даёт регрессия</h3>
+            <ul class="check-list">
+              <li>увидеть первопричину состояния;</li>
+              <li>осознать внутреннюю связь с проблемой;</li>
+              <li>снизить эмоциональный заряд;</li>
+              <li>изменить реакцию и внутреннее восприятие.</li>
+            </ul>
+          </div>
+          <div class="small-card">
+            <h3>Почему это важно</h3>
+            <p>
+              Пока эмоциональный блок остаётся в подсознании, он продолжает влиять на поведение, выбор,
+              отношения и качество жизни. Освобождение этого заряда часто становится ключом к внутренним изменениям.
+            </p>
           </div>
         </div>
-      </section>
-    </main>
-  </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Для кого этот курс
+        </div>
+        <h2 style="margin-top: 18px;">Этот курс для вас, если вы узнаёте себя в одном или нескольких пунктах</h2>
+      </div>
+
+      <div class="audience-grid">
+        <div class="small-card">
+          <h3>Интерес к теме</h3>
+          <p>Вам интересна гипнотерапия и работа с подсознанием.</p>
+        </div>
+        <div class="small-card">
+          <h3>Новая профессия</h3>
+          <p>Вы хотите освоить новую профессию или усилить текущую практику.</p>
+        </div>
+        <div class="small-card">
+          <h3>Желание помогать</h3>
+          <p>Вы чувствуете в себе желание помогать людям и быть проводником изменений.</p>
+        </div>
+        <div class="small-card">
+          <h3>Самопознание</h3>
+          <p>Вы хотите глубже понять себя, причины своих состояний и повторяющихся сценариев.</p>
+        </div>
+        <div class="small-card">
+          <h3>Рабочие инструменты</h3>
+          <p>Вы ищете реальные инструменты трансформации, а не только теоретические знания.</p>
+        </div>
+        <div class="small-card">
+          <h3>Работа с эмоциями</h3>
+          <p>Вы хотите научиться выявлять и убирать эмоциональные блоки.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sm">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Что вы получите в результате
+        </div>
+        <h2 style="margin-top: 18px;">Не просто знания, а внутреннюю и профессиональную трансформацию</h2>
+      </div>
+
+      <div class="result-grid">
+        <div class="small-card">
+          <h3>Понимание гипноза</h3>
+          <p>Вы поймёте, что такое гипноз и как он работает на практике.</p>
+        </div>
+        <div class="small-card">
+          <h3>Распознавание состояний</h3>
+          <p>Научитесь распознавать естественные трансовые состояния и понимать их логику.</p>
+        </div>
+        <div class="small-card">
+          <h3>Инструменты работы</h3>
+          <p>Освоите инструменты работы с подсознанием, эмоциями и внутренними блоками.</p>
+        </div>
+        <div class="small-card">
+          <h3>Глубинная терапия</h3>
+          <p>Познакомитесь с регрессией как методом глубинной работы.</p>
+        </div>
+        <div class="small-card">
+          <h3>Практическое применение</h3>
+          <p>Сможете применять полученные знания для себя и в работе с другими людьми.</p>
+        </div>
+        <div class="small-card">
+          <h3>Экологичный подход</h3>
+          <p>Узнаете, как проводить сессию бережно, безопасно и осознанно.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Почему мне можно доверять
+        </div>
+        <h2 style="margin-top: 18px;">Меня зовут Дмитрий Пархоменко</h2>
+      </div>
+
+      <div class="profile">
+        <div class="profile-photo"></div>
+        <div class="card">
+          <h3>Гипнотерапевт, выпускник Американской Академии Гипноза</h3>
+          <p>
+            Я с большим удовольствием обучу вас гипнотерапии, поделюсь своими знаниями, опытом
+            и практическим подходом к работе с подсознанием.
+          </p>
+          <p>
+            Моя задача — не просто дать вам теорию, а помочь вам понять саму суть процесса
+            и научиться применять эти знания на практике.
+          </p>
+          <ul class="check-list">
+            <li>авторский подход;</li>
+            <li>объяснение сложного простым языком;</li>
+            <li>сочетание философии и практики;</li>
+            <li>ориентация на реальные результаты.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sm">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Формат обучения
+        </div>
+        <h2 style="margin-top: 18px;">Удобная структура курса, чтобы вы могли пройти путь последовательно</h2>
+      </div>
+
+      <div class="format-grid">
+        <div class="small-card">
+          <h3>Онлайн-формат</h3>
+          <p>Обучение проходит онлайн, из любой точки мира.</p>
+        </div>
+        <div class="small-card">
+          <h3>Пошаговые модули</h3>
+          <p>Материал структурирован от базовых понятий к практическому применению.</p>
+        </div>
+        <div class="small-card">
+          <h3>Практика</h3>
+          <p>Практические занятия и отработка ключевых инструментов.</p>
+        </div>
+        <div class="small-card">
+          <h3>Разборы</h3>
+          <p>Анализ ситуаций, примеров и типовых запросов клиентов.</p>
+        </div>
+        <div class="small-card">
+          <h3>Поддержка</h3>
+          <p>Обратная связь, сопровождение и доступ к материалам.</p>
+        </div>
+        <div class="small-card">
+          <h3>Дополнительно</h3>
+          <p>Записи занятий, чат участников и возможность выдачи сертификата.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="consultation">
+    <div class="container">
+      <div class="cta-box">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Бесплатная консультация
+        </div>
+        <h2 style="margin-top: 18px;">Не уверены, подойдёт ли вам курс? Приходите на бесплатную консультацию</h2>
+        <p class="lead">
+          Если вам интересна тема гипнотерапии, если вы чувствуете в себе желание помогать людям
+          или понимаете, что хотите изменить что-то в своей жизни — приходите на консультацию.
+        </p>
+        <ul class="check-list" style="display:inline-block; text-align:left; margin: 12px auto 20px;">
+          <li>разберём именно вашу ситуацию;</li>
+          <li>определим, чем вам может быть полезен курс;</li>
+          <li>посмотрим, как гипнотерапия может помочь именно вам.</li>
+        </ul>
+        <div class="hero-actions" style="justify-content:center; margin-bottom:0;">
+          <a href="#" class="btn btn-primary">Записаться на бесплатную консультацию</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sm" id="mini-course">
+    <div class="container">
+      <div class="cta-box">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Бесплатный мини-курс
+        </div>
+        <h2 style="margin-top: 18px;">Хотите познакомиться с темой ближе? Получите бесплатный мини-курс по гипнотерапии</h2>
+        <p class="lead">
+          Если вы хотите сначала узнать больше о гипнозе, его возможностях и принципах работы,
+          начните с бесплатного мини-курса и сделайте первый шаг в тему осознанно.
+        </p>
+        <div class="hero-actions" style="justify-content:center; margin-bottom:0;">
+          <a href="#" class="btn btn-secondary">Получить бесплатный мини-курс</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          FAQ
+        </div>
+        <h2 style="margin-top: 18px;">Ответы на частые вопросы</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Подойдёт ли курс новичку?</h3>
+          <p>Да. Курс выстроен так, чтобы в него мог войти как человек без опыта, так и практикующий специалист.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Можно ли применять эти знания без опыта?</h3>
+          <p>Да, при последовательном обучении и соблюдении принципов экологичной практики вы сможете начать применять инструменты постепенно.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Гипноз — это безопасно?</h3>
+          <p>При грамотном и бережном подходе гипноз является естественным состоянием внимания и используется как инструмент осознанной работы.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Человек всё помнит во время гипноза?</h3>
+          <p>Да. В большинстве случаев человек сохраняет осознанность, контроль и память о происходящем процессе.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Подойдёт ли курс тем, кто хочет помогать себе, а не только другим?</h3>
+          <p>Да. Эти знания полезны как для профессиональной практики, так и для более глубокого понимания себя и своих состояний.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Чем гипнотерапия отличается от медитации и других практик?</h3>
+          <p>Медитация чаще направлена на наблюдение и состояние, а гипнотерапия — на целенаправленную работу с внутренними процессами, реакциями и блоками.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Нужна ли предварительная подготовка?</h3>
+          <p>Нет. Достаточно интереса к теме, готовности учиться и желания глубже понять работу подсознания.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="badge">
+          <span class="eyebrow-dot"></span>
+          Финальный шаг
+        </div>
+        <h2 style="margin-top: 18px;">
+          Если вы хотите глубже понять, как работает подсознание, освоить гипнотерапию
+          и научиться применять её в жизни и практике — этот курс для вас
+        </h2>
+        <p class="lead">Сделайте первый шаг уже сейчас.</p>
+        <div class="hero-actions" style="justify-content:center; margin-bottom:0;">
+          <a href="#" class="btn btn-primary">Записаться на консультацию</a>
+          <a href="#" class="btn btn-secondary">Получить бесплатный мини-курс</a>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="footer-note">
+        © Дмитрий Пархоменко — авторский курс по гипнотерапии
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>
