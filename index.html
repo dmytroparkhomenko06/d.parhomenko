@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Лендинг — Работа с подсознанием</title>
+  <style>
+    :root {
+      --bg: #2b0f4a;
+      --bg-secondary: #3a1563;
+      --bg-soft: #4d1d7f;
+      --accent: #c86bff;
+      --accent-strong: #e15dff;
+      --text: #ffffff;
+      --text-soft: rgba(255,255,255,0.82);
+      --line: rgba(255,255,255,0.14);
+      --card: rgba(255,255,255,0.08);
+      --shadow: rgba(132, 42, 204, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(225, 93, 255, 0.22), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.06), transparent 18%),
+        linear-gradient(135deg, var(--bg) 0%, var(--bg-secondary) 52%, #220a3d 100%);
+      min-height: 100vh;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(31, 10, 52, 0.68);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .logo span {
+      color: #f2b7ff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 48px 0 72px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 320px;
+      height: 320px;
+      background: rgba(225, 93, 255, 0.2);
+      top: 30px;
+      left: -80px;
+    }
+
+    .hero::after {
+      width: 360px;
+      height: 360px;
+      background: rgba(147, 87, 255, 0.22);
+      bottom: -120px;
+      right: -100px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      font-size: 13px;
+      color: #f3d6ff;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: clamp(34px, 6vw, 68px);
+      line-height: 1.04;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      max-width: 760px;
+    }
+
+    .hero-text {
+      margin: 0 0 30px;
+      max-width: 600px;
+      color: var(--text-soft);
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, #d86dff 0%, #9d49ff 100%);
+      box-shadow: 0 16px 36px var(--shadow);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      min-width: 150px;
+      padding: 16px 18px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--text-soft);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+    }
+
+    .banner-card {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 24px 60px rgba(14, 5, 28, 0.35);
+    }
+
+    .banner-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .banner-glow {
+      position: absolute;
+      inset: auto 20px 20px 20px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0), rgba(181, 92, 255, 0.18));
+      pointer-events: none;
+    }
+
+    .section-preview {
+      padding: 0 0 64px;
+    }
+
+    .preview-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .preview-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .preview-item h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .preview-item p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .preview-box {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 24px, 1200px);
+      }
+
+      .hero {
+        padding-bottom: 48px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .stat {
+        width: 100%;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <div class="logo">Mind<span>Shift</span></div>
+          <div class="nav-links">
+            <a href="#program">Программа</a>
+            <a href="#benefits">Преимущества</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#contacts">Контакты</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-content">
+              <div class="eyebrow">Обучение работе с подсознанием</div>
+              <h1>Научись работать с подсознанием и помогать людям менять жизнь к лучшему.</h1>
+              <p class="hero-text">
+                Освой современный подход, который помогает глубже понимать внутренние процессы человека,
+                экологично сопровождать изменения и строить востребованную практику помощи людям.
+              </p>
+
+              <div class="hero-actions">
+                <a
+                  class="btn btn-primary"
+                  href="https://t.me/DmytroParkhomenkohypnotherapist"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Записаться на курс
+                </a>
+                <a
+                  class="btn btn-secondary"
+                  href="https://t.me/DmytroParkhomenkohypnotherapist"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Узнать подробнее
+                </a>
+              </div>
+
+              <div class="hero-stats">
+                <div class="stat">
+                  <strong>8 недель</strong>
+                  <span>Практико-ориентированного обучения</span>
+                </div>
+                <div class="stat">
+                  <strong>Онлайн</strong>
+                  <span>Из любой точки мира в удобном формате</span>
+                </div>
+                <div class="stat">
+                  <strong>Поддержка</strong>
+                  <span>Кураторы и разбор реальных кейсов</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="banner-card">
+                <img
+                  src="https://pfst.cf2.poecdn.net/base/image/8c8995640edd827edb710c39d6e3e4f76d7a63d795e4afd2a986f2fbd6436dc3?w=1536&h=1024"
+                  alt="Банер первого экрана"
+                />
+                <div class="banner-glow"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-preview" id="benefits">
+        <div class="container">
+          <div class="preview-box">
+            <div class="preview-item">
+              <h3>Глубокое понимание</h3>
+              <p>Изучай инструменты работы с убеждениями, эмоциями, внутренними сценариями и личностными изменениями.</p>
+            </div>
+            <div class="preview-item">
+              <h3>Практика с первого модуля</h3>
+              <p>Закрепляй знания на упражнениях, разборах и пошаговых техниках, которые можно применять в работе.</p>
+            </div>
+            <div class="preview-item">
+              <h3>Профессия с пользой</h3>
+              <p>Помогай людям проходить через внутренние трансформации и выстраивай экспертность в востребованной нише.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
