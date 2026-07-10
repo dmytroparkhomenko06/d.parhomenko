@@ -239,7 +239,6 @@
       background:
         linear-gradient(145deg, rgba(177, 76, 255, 0.16), rgba(232, 121, 249, 0.08)),
         rgba(255, 255, 255, 0.04);
-      display: flex;
     }
 
     .hero-banner img {
@@ -272,14 +271,13 @@
     }
 
     .banner-content {
-      position: relative;
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
       z-index: 2;
-      height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
       display: flex;
-      padding: 30px 30px 45px 30px;
+      padding: 30px;
     }
 
     .banner-chip {
